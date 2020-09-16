@@ -66,10 +66,6 @@ However, we can determine the length of each segment using a bit of trigonometry
 \end{tikzpicture}
 ```
 
-$$
-\tikz
-$$
-
 From the diagram, we can see that the tangent of the angle between the center of the log and the trunk of the log $\tan\theta$ is
 
 $$
@@ -123,6 +119,8 @@ $$
 \tag{2} l = \frac{C-c}{2\pi\tan\theta}
 $$
 
+For each segment $v_i$, the large base of the segment $C_i$ becomes the small segment of the next segment $v_{i+1}$. That is to say, $C_i = c_{i+1}$. With this information, we can construct a pseudocode algorithm for this procedure.
+
 ```go
 n := 3
 small_c := 2.5
@@ -137,6 +135,10 @@ ls[n] := {0}
 cs[n + 1] := {small_c, 0}
 
 for i := range 0..n:
-    ls[i] := 
+    ls[i] := get_length() // using formula (1)
 
+    // cs[i] is c and cs[i + 1 ] is C.
+    cs[i + 1] := get_big_c() // using formula (2)
 ```
+
+This repository contains a C program that implements this code.
