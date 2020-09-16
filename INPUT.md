@@ -22,9 +22,9 @@ $$
 \begin{aligned}
 V_f &= \frac{1}{3}\pi L \left[\left(\frac{c}{2\pi}\right)^2+\left(\frac{c}{2\pi}\right)\left(\frac{C}{2\pi}\right)+\left(\frac{C}{2\pi}\right)^2\right] \\
 
-&= \left(\frac{1}{3}\right)\left(\frac{1}{4\pi^2}\right)(\pi L)\left(c^2+cC+C^2\right) \\
+&= \left(\frac{1}{3}\right) \left(\frac{1}{4\pi^2}\right) (\pi L) \left(c^2+cC+C^2\right) \\
 
-&= \frac{1}{12\pi}L\left(c^2+cC+C^2\right)
+&= \frac{1}{12\pi} L \left(c^2+cC+C^2\right)
 \end{aligned}
 $$
 
@@ -34,7 +34,6 @@ Each segment is itself a frustum. However, in this case, we do not know the valu
 
 However, we can determine the length of each segment using a bit of trigonometry:
 
-```latex
 \begin{tikzpicture}[domain=0:5]
     % draw frustum
     \draw (0,0) -- (0,1) -- (4,2) -- (4,0) -- cycle;
@@ -64,15 +63,12 @@ However, we can determine the length of each segment using a bit of trigonometry
     \path[clip] (0,1) -- (4,2) -- (4,1);
     \node[circle,draw=blue,minimum size=60pt] at (0,1) (circ) {};
 \end{tikzpicture}
-```
 
 From the diagram, we can see that the tangent of the angle between the center of the log and the trunk of the log $\tan\theta$ is
 
 $$
 \frac{C}{4\pi L}
 $$
-
-This value holds
 
 Using similar triangles, we can determine the length of the segment using the following formula:
 
@@ -107,16 +103,16 @@ C &= \sqrt[3]{12\pi v_f\tan\theta + c^3}
 \end{aligned}
 $$
 
-In short, in order to determine the length of each segment, we start from the small base and determine the circumference of the segment's large base $C$ using the following formula:
+In short, in order to determine the length of each segment, we start from the small base and determine the circumference of the segment's large base $C$ using Formula (1):
 
 $$
-\tag{1} C = \sqrt[3]{12\pi v_f\tan\theta + c^3}
+C = \sqrt[3]{12\pi v_f\tan\theta + c^3}
 $$
 
-We can use this value of $C$ to determine the segment's length using the following formula:
+We can use this value of $C$ to determine the segment's length using Formula (2):
 
 $$
-\tag{2} l = \frac{C-c}{2\pi\tan\theta}
+l = \frac{C-c}{2\pi\tan\theta}
 $$
 
 For each segment $v_i$, the large base of the segment $C_i$ becomes the small segment of the next segment $v_{i+1}$. That is to say, $C_i = c_{i+1}$. With this information, we can construct a pseudocode algorithm for this procedure.

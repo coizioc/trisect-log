@@ -14,7 +14,7 @@ Finally, let us approximate the shape of the log as a [frustum](https://mathworl
 
 In order to better accommodate the problem, we will replace the radii in the equation with their respective circumferences:
 
-<p align="center"><img src="svgs/bb3a350864ecac96b25a5531e92dc838.svg?invert_in_darkmode" align=middle width=328.8417pt height=139.12635pt/></p>
+<p align="center"><img src="svgs/bd4c800ddf7592e9da9cc20e7175cd92.svg?invert_in_darkmode" align=middle width=328.8417pt height=139.12635pt/></p>
 
 Plugging this equation in for the values of <img src="svgs/3e18a4a28fdee1744e5e3f79d13b9ff6.svg?invert_in_darkmode" align=middle width=7.087278pt height=14.10255pt/>, <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.876435pt height=22.38192pt/>, and <img src="svgs/ddcb483302ed36a59286424aa5e0be17.svg?invert_in_darkmode" align=middle width=11.14542pt height=22.38192pt/> given in the problem, we get a volume of 21 ft<img src="svgs/b6c5b75bafc8bbc771fa716cb26245ff.svg?invert_in_darkmode" align=middle width=6.5281095pt height=26.70657pt/> for the entire log. Therefore, to trisect the volume of the log, each segment must have volume <img src="svgs/34a806455b46fab79559a53b9947934c.svg?invert_in_darkmode" align=middle width=107.646pt height=24.56553pt/> ft<img src="svgs/b6c5b75bafc8bbc771fa716cb26245ff.svg?invert_in_darkmode" align=middle width=6.5281095pt height=26.70657pt/>.
 
@@ -22,15 +22,11 @@ Each segment is itself a frustum. However, in this case, we do not know the valu
 
 However, we can determine the length of each segment using a bit of trigonometry:
 
-```latex
 <p align="center"><img src="svgs/1a004cd058f4c525905127f66ec1baf1.svg?invert_in_darkmode" align=middle width=698.13315pt height=136.654815pt/></p>
-```
 
 From the diagram, we can see that the tangent of the angle between the center of the log and the trunk of the log <img src="svgs/c1099762578ac76c8080002b76e0e2bf.svg?invert_in_darkmode" align=middle width=34.627065pt height=22.74591pt/> is
 
 <p align="center"><img src="svgs/2c99996fb88151e5265115189e809f2f.svg?invert_in_darkmode" align=middle width=29.366535pt height=33.5874pt/></p>
-
-This value holds
 
 Using similar triangles, we can determine the length of the segment using the following formula:
 
@@ -40,13 +36,13 @@ We can now plug the value for <img src="svgs/2f2322dff5bde89c37bcae4116fe20a8.sv
 
 <p align="center"><img src="svgs/13249659c26f08ff83aa0b1323d521e0.svg?invert_in_darkmode" align=middle width=289.2186pt height=281.1006pt/></p>
 
-In short, in order to determine the length of each segment, we start from the small base and determine the circumference of the segment's large base <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.876435pt height=22.38192pt/> using the following formula:
+In short, in order to determine the length of each segment, we start from the small base and determine the circumference of the segment's large base <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.876435pt height=22.38192pt/> using Formula (1):
 
-<p align="center"><img src="svgs/93f023e2e745d0d098dddd1e602ecc16.svg?invert_in_darkmode" align=middle width=167.0823pt height=29.48121pt/></p>
+<p align="center"><img src="svgs/3dd39e0863f62654e0ba71300b17fbc8.svg?invert_in_darkmode" align=middle width=167.0823pt height=29.48121pt/></p>
 
-We can use this value of <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.876435pt height=22.38192pt/> to determine the segment's length using the following formula:
+We can use this value of <img src="svgs/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode" align=middle width=12.876435pt height=22.38192pt/> to determine the segment's length using Formula (2):
 
-<p align="center"><img src="svgs/c560f9afc7c466d31566ad2dec44b0ef.svg?invert_in_darkmode" align=middle width=84.628995pt height=33.5874pt/></p>
+<p align="center"><img src="svgs/38b2c08b76e45c477dd93284564f1290.svg?invert_in_darkmode" align=middle width=84.628995pt height=33.5874pt/></p>
 
 For each segment <img src="svgs/9f7365802167fff585175c1750674d42.svg?invert_in_darkmode" align=middle width=12.571845pt height=14.10255pt/>, the large base of the segment <img src="svgs/db0e77b2ab4f495dea1f5c5c08588288.svg?invert_in_darkmode" align=middle width=16.338465pt height=22.38192pt/> becomes the small segment of the next segment <img src="svgs/a317d2a66b5388d07f73fcb3ef21fef8.svg?invert_in_darkmode" align=middle width=29.153685pt height=14.10255pt/>. That is to say, <img src="svgs/719bccf5de5171cdf95ed6ad8f1f2be1.svg?invert_in_darkmode" align=middle width=67.350195pt height=22.38192pt/>. With this information, we can construct a pseudocode algorithm for this procedure.
 
