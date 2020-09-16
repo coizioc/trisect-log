@@ -14,7 +14,7 @@ static inline double pow2(double a) { return a * a; }
 
 static inline double pow3(double a) { return a * a * a; }
 
-static inline double frustum_area(double h, double a, double b) {
+static inline double frustum_volume(double h, double a, double b) {
     return h * (pow2(a) + a * b + pow2(b)) / (12 * M_PI);
 }
 
@@ -28,7 +28,7 @@ int main(void) {
     double l[N_SEGMENTS] = {0};
     double c[N_SEGMENTS + 1] = {SMALL_C, 0};
 
-    VOLUME = frustum_area(LENGTH, SMALL_C, BIG_C);
+    VOLUME = frustum_volume(LENGTH, SMALL_C, BIG_C);
     TAN_THETA = BIG_C / (2 * M_PI * LENGTH / (1 - SMALL_C / BIG_C));
 
     printf("Splitting log into %d segments with:\n", N_SEGMENTS);
@@ -45,7 +45,7 @@ int main(void) {
         printf("Length of segment %lu: %.5lf\n", i + 1, l[i]);
 
         sum_length += l[i];
-        sum_volume += frustum_area(l[i], c[i], c[i + 1]);
+        sum_volume += frustum_volume(l[i], c[i], c[i + 1]);
     }
 
     printf("%s", "\n");
